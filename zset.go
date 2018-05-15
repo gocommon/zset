@@ -1,7 +1,6 @@
 package zset
 
 import (
-	"fmt"
 	"sync"
 
 	"github.com/gocommon/skiplist"
@@ -43,7 +42,7 @@ func (p *Zset) Add(score float64, member string) {
 func (p *Zset) Range(start, stop int) []*Obj {
 
 	start, stop = p.rangeZone(start, stop, false)
-	fmt.Println("Range", start, stop)
+	// fmt.Println("Range", start, stop)
 
 	start++
 	stop++
@@ -53,7 +52,7 @@ func (p *Zset) Range(start, stop int) []*Obj {
 	list := make([]*Obj, 0, stop-start)
 
 	for i := start; e != nil && e.Value != nil && i < stop; i++ {
-		fmt.Println("Range append", p.list.Len(), i, start, stop)
+		// fmt.Println("Range append", p.list.Len(), i, start, stop)
 		list = append(list, e.Value.(*Obj))
 		e = e.Next()
 	}
@@ -64,15 +63,15 @@ func (p *Zset) Range(start, stop int) []*Obj {
 // RevRange RevRange
 func (p *Zset) RevRange(start, stop int) []*Obj {
 	start, stop = p.rangeZone(start, stop, true)
-	fmt.Println("RevRange", start, stop)
+	// fmt.Println("RevRange", start, stop)
 
 	list := make([]*Obj, 0, start-stop)
 
 	e := p.list.GetElementByRank(start)
-	fmt.Println("RevRange e", e.Value)
+	// fmt.Println("RevRange e", e.Value)
 
 	for i := start; e != nil && e.Value != nil && i > stop; i-- {
-		fmt.Println("start", i, e.Value)
+		// fmt.Println("start", i, e.Value)
 		list = append(list, e.Value.(*Obj))
 		e = e.Prev()
 	}

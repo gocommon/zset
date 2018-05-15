@@ -29,7 +29,7 @@ func (p *Obj) Less(other interface{}) bool {
 	if p.score < other.(*Obj).score {
 		return true
 	}
-	if p.score == other.(*Obj).score && len(p.member) < len(other.(*Obj).member) {
+	if p.score == other.(*Obj).score && p.member < other.(*Obj).member {
 		return true
 	}
 	return false
