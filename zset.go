@@ -20,6 +20,11 @@ func NewZset() *Zset {
 	}
 }
 
+// Len Len
+func (p *Zset) Len() int {
+	return p.list.Len()
+}
+
 // Add zadd
 func (p *Zset) Add(score float64, member string) {
 

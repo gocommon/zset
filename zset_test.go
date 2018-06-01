@@ -26,15 +26,18 @@ func TestZset(t *testing.T) {
 	z.Add(6.67, "sh600616")
 	z.Add(6.68, "sh600615")
 	z.Add(6.69, "sh600618")
-	z.Add(6.64, "sh6006013")
+	z.Add(-6.64, "sh6006013")
 	z.Add(6.65, "sh600614")
 	z.Add(6.66, "sh600615")
 	z.Add(6.61, "sh6006012")
-	z.Add(6.1, "sh600602")
+	z.Add(-6.1, "sh600602")
 
-	z.Add(6.63, "sh6006013")
+	z.Add(-6.63, "sh6006013")
 
-	list := z.Range(0, 23)
+	t.Log("list len", z.Len())
+
+	// list := z.RevRange(0, -1)
+	list := z.Range(0, 3)
 
 	if len(list) == 0 {
 		t.Fatal("len(list) == 0 ")
