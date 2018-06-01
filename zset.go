@@ -112,3 +112,9 @@ func (p *Zset) rangeZone(start, stop int, rev bool) (int, int) {
 
 	return start, stop
 }
+
+// Clean Clean
+func (p *Zset) Clean() {
+	p.dict = new(sync.Map)
+	p.list = skiplist.New()
+}

@@ -51,6 +51,15 @@ func TestZset(t *testing.T) {
 	if !checkList(list) {
 		t.Fatal("checkList")
 	}
+
+	z.Clean()
+
+	list = z.Range(0, 3)
+
+	if len(list) != 0 {
+		t.Fatal("len(list) != 0 ")
+	}
+
 }
 
 func checkList(list []*Obj) bool {
